@@ -8,6 +8,8 @@ class Square:
     def changeValue(self, newValue: int) -> None:
         if newValue == 0:
             self.color = GREEN
+        elif newValue == -2:
+            self.color = WHITE
         else:
             self.value = newValue
             self.color = GREY

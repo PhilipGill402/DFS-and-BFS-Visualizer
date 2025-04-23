@@ -12,9 +12,9 @@ pygame.display.set_caption("Path Finding")
 running = True
 board = Board()
 gameBoard = board.board
-oldBoard = board.oldBoard
 simRunning = False
 setTarget = False
+setStart = False
 counter = 0
 
 while running:
@@ -25,8 +25,16 @@ while running:
     for ev in pygame.event.get():
         if ev.type == pygame.QUIT:
             running = False
-        if ev.type == pygame.MOUSEBUTTONUP and not setTarget:
-            (col, row) = getPos(x, y) 
+        if ev.type == pygame.MOUSEBUTTONDOWN and not setTarget:
+            #sets the target position denoted by a "0" in the array
+            (col, row) = getPos(x, y)
+            gameBoard[row][col].changeValue(0)
+            setTarget = True
+        elif ev.type == pygame.MOUSEBUTTONDOWN and not setStart:
+            #sets the start position denoted by a "-2" in the array
+            (col, row) = getPos(x, y)
+            gameBoard[row][col].changeValue(-2)
+            setStart = True
             
 
         pygame.display.update()
