@@ -1,6 +1,5 @@
 import pygame
 from Constants import * 
-import time
 from Board import *
 
 def getPos(x:int,y:int) -> tuple:
