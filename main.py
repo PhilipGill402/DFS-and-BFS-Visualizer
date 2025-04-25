@@ -1,6 +1,7 @@
 import pygame
 from Constants import * 
 from Board import *
+from BFS import *
 
 def getPos(x:int,y:int) -> tuple:
     return (int(x//SQUAREX), int(y//SQUAREY))
@@ -33,7 +34,13 @@ while running:
             #sets the start position denoted by a "-2" in the array
             (col, row) = getPos(x, y)
             gameBoard[row][col].changeValue(-2)
+            startX = col
+            startY = row 
             setStart = True
+        elif ev.type == pygame.KEYDOWN:
+            if ev.key == pygame.K_SPACE and setStart:
+                solver = BFS(gameBoard, startX, startY)
+                solver.bfs()
             
 
         pygame.display.update()

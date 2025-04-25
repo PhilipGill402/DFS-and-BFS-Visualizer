@@ -3,11 +3,11 @@ from Constants import *
 class Solver:
     def __init__(self, board):
         self.board = board
-        self.visited = [[False]*YCELLS]*XCELLS
+        self.visited = [[False for j in range(YCELLS)] for i in range(XCELLS)]
         self.numRows = YCELLS
         self.numCols = XCELLS
         self.MAX_NEIGHBORS = 8
-        self.order = 0
+        self.order = 1
     
     def isValidPos(self, x, y):
         return x >= 0 and x < self.numCols and y >= 0 and y < self.numRows
@@ -30,7 +30,7 @@ class Solver:
             for j in range(-1, 2):
                 if (not (i == 0 and j == 0)):
                     newX = x + i
-                    newY = y + i
+                    newY = y + j
                     if (self.isValidPos(newX, newY)):
                         neighbors.append((newX, newY))
         
