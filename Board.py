@@ -26,8 +26,11 @@ class Board:
                 square = self.board[i][j]
                 if square.color == BLACK:
                     pygame.draw.rect(surface, WHITE, (x,y,width,height), 1, border_radius=1)
+                elif square.color == GREY:
+                    pygame.draw.rect(surface, WHITE, (x,y,width,height), 1, border_radius=1)
+                    pygame.draw.rect(surface, GREY, (x,y,width-1,height-1))
                 else:
                     pygame.draw.rect(surface, square.color, (x,y,width,height))
     
     def changeVal(self, x:int, y:int, val:bool) -> None:
-        self.board[y][x] = val
+        self.board[y][x].changeValue(val)

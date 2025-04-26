@@ -19,7 +19,7 @@ class BFS(Solver):
                 y = i[1]
                 if (not super().isVisited(x, y)):
                     if self.board[y][x].value == 0:
-                        break
+                        return
                     super().visit(x, y)
                     super().process(x, y)
                     queue.append(i)

@@ -28,12 +28,12 @@ while running:
         if ev.type == pygame.MOUSEBUTTONDOWN and not setTarget:
             #sets the target position denoted by a "0" in the array
             (col, row) = getPos(x, y)
-            gameBoard[row][col].changeValue(0)
+            board.changeVal(col, row, 0)
             setTarget = True
         elif ev.type == pygame.MOUSEBUTTONDOWN and not setStart:
             #sets the start position denoted by a "-2" in the array
             (col, row) = getPos(x, y)
-            gameBoard[row][col].changeValue(-2)
+            board.changeVal(col, row, 0)
             startX = col
             startY = row 
             setStart = True
