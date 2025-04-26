@@ -33,7 +33,7 @@ while running:
         elif ev.type == pygame.MOUSEBUTTONDOWN and not setStart:
             #sets the start position denoted by a "-2" in the array
             (col, row) = getPos(x, y)
-            board.changeVal(col, row, 0)
+            board.changeVal(col, row, -2)
             startX = col
             startY = row 
             setStart = True
