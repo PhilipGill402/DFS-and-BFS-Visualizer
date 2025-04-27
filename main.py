@@ -2,6 +2,7 @@ import pygame
 from Constants import * 
 from Board import *
 from BFS import *
+import time
 
 def getPos(x:int,y:int) -> tuple:
     return (int(x//SQUAREX), int(y//SQUAREY))
@@ -16,6 +17,8 @@ simRunning = False
 setTarget = False
 setStart = False
 counter = 0
+positions = []
+
 
 while running:
     surface.fill(BLACK)
@@ -37,10 +40,16 @@ while running:
             startX = col
             startY = row 
             setStart = True
+            solver = BFS(gameBoard, startX, startY)
+            positions = solver.bfs() 
         elif ev.type == pygame.KEYDOWN:
-            if ev.key == pygame.K_SPACE and setStart:
-                solver = BFS(gameBoard, startX, startY)
-                solver.bfs()
+            if ev.key == pygame.K_b and setStart:
+                for x, y in positions:
+                    counter += 1
+                    board.changeVal(x, y, counter)
+                    board.drawBoard(surface)
+                    pygame.display.update()
+                    time.sleep(0.15)
             
 
         pygame.display.update()

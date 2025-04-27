@@ -7,7 +7,7 @@ class BFS(Solver):
         self.startX = startX
         self.startY = startY
     
-    def bfs(self):
+    def bfs(self) -> list:
         queue = deque()
         super().visit(self.startX, self.startY)
         queue.append((self.startX, self.startY))
@@ -19,7 +19,7 @@ class BFS(Solver):
                 y = i[1]
                 if (not super().isVisited(x, y)):
                     if self.board[y][x].value == 0:
-                        return
+                        return self.order
                     super().visit(x, y)
                     super().process(x, y)
                     queue.append(i)

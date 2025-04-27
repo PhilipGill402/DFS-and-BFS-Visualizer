@@ -7,7 +7,7 @@ class Solver:
         self.numRows = YCELLS
         self.numCols = XCELLS
         self.MAX_NEIGHBORS = 8
-        self.order = 1
+        self.order = [] 
     
     def isValidPos(self, x, y):
         return x >= 0 and x < self.numCols and y >= 0 and y < self.numRows
@@ -19,8 +19,7 @@ class Solver:
         self.visited[y][x] = True
 
     def process(self, x, y):
-        self.board[y][x].changeValue(self.order)
-        self.order += 1
+        self.order.append((x, y)) 
 
     def getNeighbors(self, x, y):
         neighbors = []
