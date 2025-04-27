@@ -17,7 +17,7 @@ simRunning = False
 setTarget = False
 setStart = False
 counter = 0
-positions = []
+BFSpositions = []
 
 
 while running:
@@ -41,10 +41,10 @@ while running:
             startY = row 
             setStart = True
             solver = BFS(gameBoard, startX, startY)
-            positions = solver.bfs() 
+            BFSpositions = solver.bfs() 
         elif ev.type == pygame.KEYDOWN:
             if ev.key == pygame.K_b and setStart:
-                for x, y in positions:
+                for x, y in BFSpositions:
                     counter += 1
                     board.changeVal(x, y, counter)
                     board.drawBoard(surface)
